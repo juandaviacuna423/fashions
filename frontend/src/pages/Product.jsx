@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { FaStar, FaShoppingBag, FaArrowLeft, FaTruck, FaUndo, FaShieldAlt, FaCheck } from 'react-icons/fa'
 
-const API = 'http://localhost:3000/api'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
 
 export default function Product({ onAddToCart }) {
   const { id } = useParams()

@@ -1,0 +1,28 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: fashions-backend
+    env: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_VERSION
+        value: 20.x
+
+  # Frontend Static Site
+  - type: web
+    name: fashions-frontend
+    env: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: 20.x
+      # Render automáticamente provee la URL del servicio a través de esta variable:
+      - key: VITE_API_URL
+        fromService:
+          type: web
+          name: fashions-backend
+          envVarKey: RENDER_EXTERNAL_URL

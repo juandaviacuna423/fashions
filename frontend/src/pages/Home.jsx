@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { FaArrowRight, FaShieldAlt, FaTruck, FaUndo, FaStar } from 'react-icons/fa'
 
-const API = 'http://localhost:3000/api'
+const API = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
 
 const CATEGORIES = [
   { slug: 'hombre', label: 'Hombre', emoji: '👔', color: 'from-blue-900/60 to-blue-950/80', img: 'https://images.unsplash.com/photo-1617137968427-85924c800a22?w=700&auto=format' },
