@@ -1,28 +1,22 @@
 services:
-  # Backend Web Service
+  # ── BACKEND (Web Service - Node/Express API) ──────────────────────────────
   - type: web
     name: fashions-backend
-    env: node
+    runtime: node
     rootDir: backend
-    buildCommand: npm install
-    startCommand: npm start
+    buildCommand: npm install && node db/seed.js
+    startCommand: node server.js
     envVars:
       - key: NODE_VERSION
-        value: 20.x
+        value: "20"
 
-  # Frontend Static Site
+  # ── FRONTEND (Static Site - React/Vite) ──────────────────────────────────
   - type: web
     name: fashions-frontend
-    env: static
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:
       - key: NODE_VERSION
-        value: 20.x
-      # Render automáticamente provee la URL del servicio a través de esta variable:
-      - key: VITE_API_URL
-        fromService:
-          type: web
-          name: fashions-backend
-          envVarKey: RENDER_EXTERNAL_URL
+        value: "20"
