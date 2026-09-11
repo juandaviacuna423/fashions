@@ -2,21 +2,14 @@ services:
   # ── BACKEND (Web Service - Node/Express API) ──────────────────────────────
   - type: web
     name: fashions-backend
-    runtime: node
+    env: node
     rootDir: backend
     buildCommand: npm install && node db/seed.js
     startCommand: node server.js
-    envVars:
-      - key: NODE_VERSION
-        value: "20"
 
   # ── FRONTEND (Static Site - React/Vite) ──────────────────────────────────
-  - type: web
+  - type: static
     name: fashions-frontend
-    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: dist
-    envVars:
-      - key: NODE_VERSION
-        value: "20"
