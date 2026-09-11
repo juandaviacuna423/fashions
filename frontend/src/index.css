@@ -1,0 +1,67 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+@theme {
+  --font-sans: "Outfit", sans-serif;
+  --color-gold: #c8a96e;
+  --color-gold-light: #e8c98e;
+  --color-gold-dark: #a8864a;
+  --color-surface: #111111;
+  --color-card: #161616;
+}
+
+@layer base {
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Outfit", sans-serif;
+    background-color: #0a0a0a;
+    color: #f4f4f4;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: #0a0a0a; }
+  ::-webkit-scrollbar-thumb { background: #c8a96e55; border-radius: 4px; }
+  ::-webkit-scrollbar-thumb:hover { background: #c8a96e; }
+}
+
+@layer components {
+  .btn-gold {
+    @apply bg-gradient-to-br from-gold to-gold-light text-black font-bold py-3 px-7 rounded-xl shadow-lg shadow-gold/20 hover:shadow-gold/40 hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer inline-flex items-center justify-center gap-2;
+  }
+  .btn-outline {
+    @apply border-2 border-gold text-gold font-bold py-3 px-7 rounded-xl hover:bg-gold hover:text-black transition-all duration-200 cursor-pointer inline-flex items-center justify-center gap-2;
+  }
+  .btn-dark {
+    @apply bg-zinc-800 border border-zinc-700 text-zinc-200 font-semibold py-3 px-6 rounded-xl hover:bg-zinc-700 hover:border-zinc-500 transition-all duration-200 cursor-pointer;
+  }
+  .card {
+    @apply bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden transition-all duration-300 hover:border-gold/40 hover:shadow-lg hover:shadow-gold/10 hover:-translate-y-1;
+  }
+  .input-field {
+    @apply w-full bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-gold focus:ring-2 focus:ring-gold/20 transition-all duration-200;
+  }
+  .badge-new {
+    @apply text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 border border-emerald-500/25 uppercase tracking-wide;
+  }
+  .badge-sale {
+    @apply text-xs font-bold px-2.5 py-1 rounded-full bg-rose-500/15 text-rose-400 border border-rose-500/25 uppercase tracking-wide;
+  }
+  .badge-featured {
+    @apply text-xs font-bold px-2.5 py-1 rounded-full bg-amber-500/15 text-amber-400 border border-amber-500/25 uppercase tracking-wide;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl font-black tracking-tighter;
+  }
+  .gold-text {
+    @apply bg-gradient-to-r from-gold to-gold-light bg-clip-text text-transparent;
+  }
+  .spinner {
+    @apply w-12 h-12 border-4 border-zinc-800 border-t-gold rounded-full animate-spin;
+  }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeInUp 0.5s ease forwards; }
