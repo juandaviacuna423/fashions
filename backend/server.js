@@ -1,5 +1,7 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
+const fs = require('fs');
 const db = require('./db/database');
 
 const app = express();
@@ -93,6 +95,19 @@ app.get('/api/orders/:id', async (req, res) => {
     res.json({ ...order, items: JSON.parse(order.items || '[]') });
   } catch (err) {
     res.status(500).json({ error: 'Error' });
+  }
+});
+
+// ── Servir Frontend (React SPA) ───────────────────────────────────────────────
+const frontendDist = path.join(__dirname, '../frontend/dist');
+app.use(express.static(frontendDist));
+
+app.get('*', (req, res) => {
+  const indexPath = path.join(frontendDist, 'index.html');
+  if (fs.existsSync(indexPath)) {
+    res.sendFile(indexPath);
+  } else {
+    res.status(200).send('FashionStore API activa. Compilando frontend...');
   }
 });
 

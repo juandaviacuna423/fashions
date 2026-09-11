@@ -4,4 +4,6 @@ dist/
 .DS_Store
 backend/fashionstore.db
 backend/fashionstore.db-journal
+backend/db/fashionstore.db
+backend/db/fashionstore.db-journal
 *.log

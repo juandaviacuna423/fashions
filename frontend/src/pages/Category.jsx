@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import { FaSlidersH, FaSearch, FaTimes } from 'react-icons/fa'
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3000/api' : '/api')
 
 const META = {
   hombre: { label: 'Hombre', emoji: '👔', desc: 'La mejor ropa masculina, desde lo casual hasta lo formal.' },

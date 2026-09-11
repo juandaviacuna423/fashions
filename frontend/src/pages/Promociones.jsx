@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import ProductCard from '../components/ProductCard'
 import { FaTag, FaFire } from 'react-icons/fa'
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:3000/api'
+const API = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:3000/api' : '/api')
 
 export default function Promociones() {
   const [products, setProducts] = useState([])
